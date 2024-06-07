@@ -1,0 +1,30 @@
+name: 'Linting & test'
+
+on: push
+
+jobs:
+  Linting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Installs packages'
+        run: npm install
+      - name: 'Execute linter'
+        run: npm run lint
+  E2E-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Installs packages'
+        run: npm install
+      - uses: cypress-io/github-action@v6
+        with:
+          start: npm run dev
+  Unit-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Installs packages'
+        run: npm install
+      - name: 'Run unit test'
+        run: npm run test:unit
