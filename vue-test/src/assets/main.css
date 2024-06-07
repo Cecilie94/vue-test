@@ -1,0 +1,44 @@
+@import "./base.css";
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+  flex: 1;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: 0.4s;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px; 
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px; 
+  }
+}
+
+
+
+/* Media query for large screens */
+@media only screen and (min-width: 1025px) {
+  body {
+    font-size: 18px; 
+  }
+
+}
