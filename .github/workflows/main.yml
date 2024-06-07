@@ -1,41 +1,30 @@
-name: 'Linting and testing'
+name: 'Linting & test'
 
 on: push
 
 jobs:
-  linting:
+  Linting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: install packages
+      - name: 'Installs packages'
         run: npm install
-        working-directory: ./vue-test # Set this to your actual project path
-      - name: run lint
+      - name: 'Execute linter'
         run: npm run lint
-        working-directory: ./vue-test # Set this to your actual project path
-
-  E2ETest:
+  E2E-Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: install packages
+      - name: 'Installs packages'
         run: npm install
-        working-directory: ./vue-test
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+      - uses: cypress-io/github-action@v6
         with:
           start: npm run dev
-        env:
-          CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
-          NODE_OPTIONS: --max_old_space_size=4096
-
-  UnitTest:
+  Unit-Test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: install packages
+      - name: 'Installs packages'
         run: npm install
-        working-directory: ./vue-test
-      - name: Run unit tests
+      - name: 'Run unit test'
         run: npm run test:unit
-        working-directory: ./vue-test
